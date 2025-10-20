@@ -7,7 +7,6 @@ import 'package:online_exam/core/l10n/translations/app_localizations.dart';
 import 'package:online_exam/core/widgets/custom_elvated_button.dart';
 import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
-import 'package:online_exam/features/auth/presentation/widgets/sign_up_button.dart';
 
 class SignUpButtonBlockCosumer extends StatelessWidget {
   const SignUpButtonBlockCosumer({
