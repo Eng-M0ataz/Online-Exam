@@ -11,28 +11,25 @@ class AuthCubit extends Cubit<AuthStates> {
   LoginUseCase loginUseCase;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController email = TextEditingController(
-    text: "ahmedfayed@gmail.com",
-  );
-  TextEditingController password = TextEditingController(text: "123456@aA");
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  final isFormValid = ValueNotifier<bool>(false);
 
   static AuthCubit get(context) => BlocProvider.of<AuthCubit>(context);
 
   void signIn() async {
-    if (formKey.currentState?.validate() == true) {
-      emit(LoginLoadingState());
-      var either = await loginUseCase.invoke(
-        LoginRequest(email: email.text, password: password.text),
-      );
-      either.fold(
-        (error) {
-          emit(LoginErrorState(error));
-        },
-        (response) {
-          emit(LoginSuccessState(response));
-        },
-      );
-    }
+    emit(LoginLoadingState());
+    var either = await loginUseCase.invoke(
+      LoginRequest(email: email.text, password: password.text),
+    );
+    either.fold(
+      (error) {
+        emit(LoginErrorState(error));
+      },
+      (response) {
+        emit(LoginSuccessState(response));
+      },
+    );
   }
 
   @override

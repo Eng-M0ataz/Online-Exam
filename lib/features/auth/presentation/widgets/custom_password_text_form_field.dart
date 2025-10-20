@@ -32,6 +32,7 @@ class _CustomPasswordTextFormFieldState
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUnfocus,
       onChanged: widget.onChanged,
       obscureText: obscureText,
       validator: widget.validator,

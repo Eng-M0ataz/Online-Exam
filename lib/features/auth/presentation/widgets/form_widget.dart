@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/enums/auth_enum.dart';
@@ -23,9 +25,9 @@ class _FormWidgetState extends State<FormWidget> {
   late TextEditingController confirmPasswordController;
   late TextEditingController phoneNumberController;
   late GlobalKey<FormState> formKey;
-  bool isvalidated = false;
   bool isPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
+  final ValueNotifier<bool> isFormValid = ValueNotifier(false);
 
   void initcontrollers() {
     userNameController = TextEditingController();
@@ -38,6 +40,22 @@ class _FormWidgetState extends State<FormWidget> {
     formKey = GlobalKey<FormState>();
   }
 
+  void onChanged() {
+    final isEveryFieldFilled = [
+      userNameController.text,
+      firstNameController.text,
+      lastNameController.text,
+      emailController.text,
+      passwordController.text,
+      confirmPasswordController.text,
+      phoneNumberController.text,
+    ].every((text) => text.trim().isNotEmpty);
+
+    if (isFormValid.value != isEveryFieldFilled) {
+      isFormValid.value = isEveryFieldFilled;
+    }
+  }
+
   void disposeControllers() {
     userNameController.dispose();
     firstNameController.dispose();
@@ -47,13 +65,6 @@ class _FormWidgetState extends State<FormWidget> {
     confirmPasswordController.dispose();
     phoneNumberController.dispose();
     formKey.currentState?.dispose();
-  }
-
-  void updateButtonState(String _) {
-    final isValid = formKey.currentState?.validate() ?? false;
-    setState(() {
-      isvalidated = isValid;
-    });
   }
 
   @override
@@ -72,11 +83,11 @@ class _FormWidgetState extends State<FormWidget> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      autovalidateMode: AutovalidateMode.onUnfocus,
       child: Column(
         children: [
           TextFormField(
-            onChanged: updateButtonState,
+            onChanged: (_) => onChanged(),
+            autovalidateMode: AutovalidateMode.onUnfocus,
             validator: (value) =>
                 authValidator(value: value!, filedType: FiledType.userName),
             controller: userNameController,
@@ -87,8 +98,8 @@ class _FormWidgetState extends State<FormWidget> {
           ),
           verticalSpace(24.h),
           RowTextField(
-            onChanged1: updateButtonState,
-            onChanged2: updateButtonState,
+            onChanged1: (_) => onChanged(),
+            onChanged2: (_) => onChanged(),
             validator1: (value) =>
                 authValidator(value: value!, filedType: FiledType.firstName),
             validator2: (value) =>
@@ -98,7 +109,8 @@ class _FormWidgetState extends State<FormWidget> {
           ),
           verticalSpace(24.h),
           TextFormField(
-            onChanged: updateButtonState,
+            onChanged: (_) => onChanged(),
+            autovalidateMode: AutovalidateMode.onUnfocus,
             validator: (value) =>
                 authValidator(value: value!, filedType: FiledType.email),
             controller: emailController,
@@ -109,8 +121,8 @@ class _FormWidgetState extends State<FormWidget> {
           ),
           verticalSpace(24.h),
           PasswordRowFields(
-            onPasswordChanged: updateButtonState,
-            onConfirmPasswordChanged: updateButtonState,
+            onConfirmPasswordChanged: (_) => onChanged(),
+            onPasswordChanged: (_) => onChanged(),
             passwordController: passwordController,
             confirmPasswordController: confirmPasswordController,
             passwordValidator: (value) =>
@@ -123,7 +135,8 @@ class _FormWidgetState extends State<FormWidget> {
           ),
           verticalSpace(24.h),
           TextFormField(
-            onChanged: updateButtonState,
+            onChanged: (_) => onChanged(),
+            autovalidateMode: AutovalidateMode.onUnfocus,
             validator: (value) =>
                 authValidator(value: value!, filedType: FiledType.phoneNumber),
             controller: phoneNumberController,
@@ -134,15 +147,19 @@ class _FormWidgetState extends State<FormWidget> {
             ),
           ),
           verticalSpace(48.h),
-          SignUpButtonBlockCosumer(
-            isvalidated: isvalidated,
-            confirmPasswordController: confirmPasswordController,
-            emailController: emailController,
-            firstNameController: firstNameController,
-            lastNameController: lastNameController,
-            passwordController: passwordController,
-            phoneNumberController: phoneNumberController,
-            userNameController: userNameController,
+          ValueListenableBuilder(
+            valueListenable: isFormValid,
+            builder: (context, value, child) => SignUpButtonBlockCosumer(
+              formKey: formKey,
+              isvalidated: value,
+              confirmPasswordController: confirmPasswordController,
+              emailController: emailController,
+              firstNameController: firstNameController,
+              lastNameController: lastNameController,
+              passwordController: passwordController,
+              phoneNumberController: phoneNumberController,
+              userNameController: userNameController,
+            ),
           ),
         ],
       ),

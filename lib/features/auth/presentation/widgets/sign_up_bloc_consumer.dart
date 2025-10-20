@@ -4,6 +4,7 @@ import 'package:online_exam/config/routing/app_routes.dart';
 import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/dialogue_utils.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
+import 'package:online_exam/core/widgets/custom_elvated_button.dart';
 import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
 import 'package:online_exam/features/auth/presentation/widgets/sign_up_button.dart';
@@ -19,6 +20,7 @@ class SignUpButtonBlockCosumer extends StatelessWidget {
     required this.phoneNumberController,
     required this.passwordController,
     required this.confirmPasswordController,
+    required this.formKey,
   });
 
   final bool isvalidated;
@@ -29,6 +31,7 @@ class SignUpButtonBlockCosumer extends StatelessWidget {
   final TextEditingController phoneNumberController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +68,17 @@ class SignUpButtonBlockCosumer extends StatelessWidget {
           password: passwordController.text,
           rePassword: confirmPasswordController.text,
         );
-        return SignUpButton(
-          isvalidated: isvalidated,
+
+        return CustomElevatedButton(
+          onPressed: isvalidated
+              ? () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<SignUpCubit>().signUp(registerInputModel);
+                  }
+                }
+              : null,
           isLoading: state is SignUpLoadingState,
-          registerInputModel: registerInputModel,
+          widget: Text(AppLocalizations.of(context)!.sign_up_button),
         );
       },
     );

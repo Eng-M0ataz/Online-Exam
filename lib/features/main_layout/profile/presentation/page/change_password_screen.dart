@@ -17,6 +17,7 @@ class ChangePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.reset_password)),
       body: Padding(
         padding: REdgeInsets.symmetric(horizontal: 16, vertical: 32),

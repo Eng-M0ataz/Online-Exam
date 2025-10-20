@@ -7,6 +7,7 @@ import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
 import 'package:online_exam/core/network/api_constants.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
+import 'package:online_exam/core/widgets/custom_elvated_button.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_states.dart';
 import 'package:online_exam/features/auth/presentation/widgets/sign_in_fields.dart';
@@ -28,18 +29,13 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.login)),
       body: Padding(
         padding: REdgeInsets.all(16),
         child: BlocListener<AuthCubit, AuthStates>(
           listener: (context, state) {
-            if (state is LoginLoadingState) {
-              DialogueUtils.showMessage(
-                context: context,
-                message: AppLocalizations.of(context)!.loading,
-              );
-            } else if (state is LoginErrorState) {
-              DialogueUtils.hideLoading(context);
+            if (state is LoginErrorState) {
               DialogueUtils.showMessage(
                 context: context,
                 message: state.error.errorMessage,
@@ -47,7 +43,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 posActionName: AppLocalizations.of(context)!.ok,
               );
             } else if (state is LoginSuccessState) {
-              DialogueUtils.hideLoading(context);
               DialogueUtils.showMessage(
                 context: context,
                 message: AppLocalizations.of(context)!.login_successfully,
@@ -75,6 +70,7 @@ class _SignInScreenState extends State<SignInScreen> {
           },
           child: Form(
             key: AuthCubit.get(context).formKey,
+            autovalidateMode: AutovalidateMode.onUnfocus,
             child: Column(
               children: [
                 const SignInFields(),
@@ -87,14 +83,29 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                 ),
                 verticalSpace(48),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50),
-                  ),
-                  onPressed: () {
-                    AuthCubit.get(context).signIn();
+                BlocBuilder<AuthCubit, AuthStates>(
+                  builder: (context, state) {
+                    final cubit = AuthCubit.get(context);
+                    final isLoading = state is LoginLoadingState;
+                    return ValueListenableBuilder<bool>(
+                      valueListenable: cubit.isFormValid,
+                      builder: (context, isValid, _) {
+                        return CustomElevatedButton(
+                          isLoading: isLoading,
+                          containerHeight: 50,
+                          onPressed: !isValid
+                              ? null
+                              : () {
+                                  if (cubit.formKey.currentState!.validate()) {
+                                    cubit.signIn();
+                                  }
+                                },
+                          textColor: Colors.white,
+                          widget: Text(AppLocalizations.of(context)!.login),
+                        );
+                      },
+                    );
                   },
-                  child: Text(AppLocalizations.of(context)!.login),
                 ),
                 verticalSpace(16),
                 const DoNotHaveAnAccount(),

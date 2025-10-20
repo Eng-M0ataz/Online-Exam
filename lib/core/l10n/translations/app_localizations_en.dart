@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -26,15 +25,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sign_up => 'Sign up';
-
-  @override
-  String get remember_me => 'Remember me';
-
-  @override
-  String get forget_password => 'Forget password';
-
-  @override
-  String get dont_have_an_account => 'Don\'t have an account';
 
   @override
   String get enter_your_user_name => 'Enter your user name';
@@ -149,29 +139,82 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get code_resend_successfully => 'Code resent successfully';
-  String get update => 'Update';
 
   @override
-  String get reset_password => 'Reset Password';
+  String get remember_me => 'Remember me';
 
   @override
-  String get current_password => 'Current Password';
+  String get forget_password => 'Forget password';
 
   @override
-  String get new_password => 'New Password';
+  String get dont_have_an_account => 'Don\'t have an account';
 
   @override
-  String get try_again => 'Try Again';
+  String get exam => 'Exam';
 
   @override
-  String get change => 'Change';
+  String get question => 'Question';
 
   @override
-  String get profile_edited_successfully => 'Profile edited successfully';
+  String get next => 'Next';
 
   @override
-  String get please_wait_while_changing => 'Please wait while changing';
+  String get finish => 'Finish';
 
   @override
-  String get password_changed_successfully => 'Password changed successfully';
+  String get time_out => 'Time out !!';
+
+  @override
+  String get view_score => 'View Score';
+
+  @override
+  String get exam_score => 'Exam Score';
+
+  @override
+  String get your_score => 'Your Score';
+
+  @override
+  String get correct => 'Correct';
+
+  @override
+  String get incorrect => 'Incorrect';
+
+  @override
+  String get show_result => 'Show Result';
+
+  @override
+  String get start_again => 'Start Again';
+
+  @override
+  String get of_ => 'of';
+
+  @override
+  String get answers => 'Answers';
+
+  @override
+  String get results => 'Results';
+
+  @override
+  String get you_have_no_results => 'You have no results';
+
+  @override
+  String get password_changed_successfully => 'password changed successfully';
+
+  @override
+  String get please_wait_while_changing => 'please wait while changing';
+
+  @override
+  String get current_password => 'current password';
+
+  @override
+  String get update => 'update';
+
+  @override
+  String get profile_edited_successfully => 'profile edited successfully';
+
+  @override
+  String get try_again => 'try again';
+
+  @override
+  String get change => 'change';
 }

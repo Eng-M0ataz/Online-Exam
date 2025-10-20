@@ -130,24 +130,6 @@ abstract class AppLocalizations {
   /// **'Sign up'**
   String get sign_up;
 
-  /// No description provided for @remember_me.
-  ///
-  /// In en, this message translates to:
-  /// **'Remember me'**
-  String get remember_me;
-
-  /// No description provided for @forget_password.
-  ///
-  /// In en, this message translates to:
-  /// **'Forget password'**
-  String get forget_password;
-
-  /// No description provided for @dont_have_an_account.
-  ///
-  /// In en, this message translates to:
-  /// **'Don\'t have an account'**
-  String get dont_have_an_account;
-
   /// No description provided for @enter_your_user_name.
   ///
   /// In en, this message translates to:
@@ -297,6 +279,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
   /// No description provided for @reset_password.
   ///
   /// In en, this message translates to:
@@ -368,59 +351,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Code resent successfully'**
   String get code_resend_successfully;
-  /// No description provided for @update.
-  ///
-  /// In en, this message translates to:
-  /// **'Update'**
-  String get update;
 
-  /// No description provided for @reset_password.
+  /// No description provided for @remember_me.
   ///
   /// In en, this message translates to:
-  /// **'Reset Password'**
-  String get reset_password;
+  /// **'Remember me'**
+  String get remember_me;
+
+  /// No description provided for @forget_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget password'**
+  String get forget_password;
+
+  /// No description provided for @dont_have_an_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account'**
+  String get dont_have_an_account;
+
+  /// No description provided for @exam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam'**
+  String get exam;
+
+  /// No description provided for @question.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get question;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @finish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// No description provided for @time_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Time out !!'**
+  String get time_out;
+
+  /// No description provided for @view_score.
+  ///
+  /// In en, this message translates to:
+  /// **'View Score'**
+  String get view_score;
+
+  /// No description provided for @exam_score.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam Score'**
+  String get exam_score;
+
+  /// No description provided for @your_score.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Score'**
+  String get your_score;
+
+  /// No description provided for @correct.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get correct;
+
+  /// No description provided for @incorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect'**
+  String get incorrect;
+
+  /// No description provided for @show_result.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Result'**
+  String get show_result;
+
+  /// No description provided for @start_again.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Again'**
+  String get start_again;
+
+  /// No description provided for @of_.
+  ///
+  /// In en, this message translates to:
+  /// **'of'**
+  String get of_;
+
+  /// No description provided for @answers.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers'**
+  String get answers;
+
+  /// No description provided for @results.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get results;
+
+  /// No description provided for @you_have_no_results.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no results'**
+  String get you_have_no_results;
+
+  /// No description provided for @password_changed_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'password changed successfully'**
+  String get password_changed_successfully;
+
+  /// No description provided for @please_wait_while_changing.
+  ///
+  /// In en, this message translates to:
+  /// **'please wait while changing'**
+  String get please_wait_while_changing;
 
   /// No description provided for @current_password.
   ///
   /// In en, this message translates to:
-  /// **'Current Password'**
+  /// **'current password'**
   String get current_password;
 
-  /// No description provided for @new_password.
+  /// No description provided for @update.
   ///
   /// In en, this message translates to:
-  /// **'New Password'**
-  String get new_password;
+  /// **'update'**
+  String get update;
+
+  /// No description provided for @profile_edited_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'profile edited successfully'**
+  String get profile_edited_successfully;
 
   /// No description provided for @try_again.
   ///
   /// In en, this message translates to:
-  /// **'Try Again'**
+  /// **'try again'**
   String get try_again;
 
   /// No description provided for @change.
   ///
   /// In en, this message translates to:
-  /// **'Change'**
+  /// **'change'**
   String get change;
-
-  /// No description provided for @profile_edited_successfully.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile edited successfully'**
-  String get profile_edited_successfully;
-
-  /// No description provided for @please_wait_while_changing.
-  ///
-  /// In en, this message translates to:
-  /// **'Please wait while changing'**
-  String get please_wait_while_changing;
-
-  /// No description provided for @password_changed_successfully.
-  ///
-  /// In en, this message translates to:
-  /// **'Password changed successfully'**
-  String get password_changed_successfully;
 }
 
 class _AppLocalizationsDelegate

@@ -18,10 +18,7 @@ class ExamsListViewItem extends StatelessWidget {
       spacing: 24.h,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          exam.title ?? "",
-          style: Theme.of(context).textTheme.displayMedium,
-        ),
+        Text(exam.title ?? "", style: Theme.of(context).textTheme.displayLarge),
         Container(
           padding: REdgeInsets.symmetric(vertical: 16, horizontal: 24),
           decoration: BoxDecoration(
@@ -33,9 +30,9 @@ class ExamsListViewItem extends StatelessWidget {
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(AppImages.examTest),
+              horizontalSpace(8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 4.h,
@@ -46,7 +43,7 @@ class ExamsListViewItem extends StatelessWidget {
                   ),
                   Text(
                     "${exam.numberOfQuestions.toString()} Question",
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       fontSize: 13.sp,
                       fontWeight: AppFontWeight.regular,
                     ),
@@ -55,11 +52,12 @@ class ExamsListViewItem extends StatelessWidget {
                   const FromToTextRich(),
                 ],
               ),
+              const Spacer(),
               Text(
                 "${exam.duration.toString()} Minutes",
                 style: Theme.of(
                   context,
-                ).textTheme.displaySmall!.copyWith(color: AppColors.blue),
+                ).textTheme.bodySmall!.copyWith(color: AppColors.blue),
               ),
             ],
           ),

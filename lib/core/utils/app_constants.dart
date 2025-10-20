@@ -10,4 +10,5 @@ abstract class AppConstants {
   static const String testToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmFiM2NlNTU1NGIzMjg5MTJlNTExMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUzMDk3NjE4fQ.p-Axr3vjlCrJTdUYgfYp6gpHi0yYYU8EzrTZ6kM7b7c";
   static const String isRemember = "isRemember";
+  static const String examBoxName = "Solved_Exam_Entity";
 }

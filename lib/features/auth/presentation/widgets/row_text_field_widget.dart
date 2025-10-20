@@ -28,6 +28,7 @@ class RowTextField extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUnfocus,
               onChanged: onChanged1,
               validator: validator1,
               controller: controller1,
@@ -40,6 +41,7 @@ class RowTextField extends StatelessWidget {
           horizontalSpace(17.h),
           Expanded(
             child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUnfocus,
               onChanged: onChanged2,
               validator: validator2,
               controller: controller2,

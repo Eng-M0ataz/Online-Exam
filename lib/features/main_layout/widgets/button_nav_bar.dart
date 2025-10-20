@@ -27,21 +27,21 @@ class CustomButtonNavBar extends StatelessWidget {
       onTap: onTap,
       items: [
         BottomNavigationBarItem(
-          icon: const NavBarUnSellectedIcon(icon: 'Assets/images/home.svg'),
-          activeIcon: const NavBarSellectedIcon(icon: 'Assets/images/home.svg'),
+          icon: const NavBarUnSellectedIcon(icon: 'assets/images/home.svg'),
+          activeIcon: const NavBarSellectedIcon(icon: 'assets/images/home.svg'),
           label: AppLocalizations.of(context)!.explore,
         ),
         BottomNavigationBarItem(
-          icon: const NavBarUnSellectedIcon(icon: 'Assets/images/results.svg'),
+          icon: const NavBarUnSellectedIcon(icon: 'assets/images/results.svg'),
           activeIcon: const NavBarSellectedIcon(
-            icon: 'Assets/images/results.svg',
+            icon: 'assets/images/results.svg',
           ),
           label: AppLocalizations.of(context)!.result,
         ),
         BottomNavigationBarItem(
-          icon: const NavBarUnSellectedIcon(icon: 'Assets/images/profile.svg'),
+          icon: const NavBarUnSellectedIcon(icon: 'assets/images/profile.svg'),
           activeIcon: const NavBarSellectedIcon(
-            icon: 'Assets/images/profile.svg',
+            icon: 'assets/images/profile.svg',
           ),
           label: AppLocalizations.of(context)!.profile,
         ),

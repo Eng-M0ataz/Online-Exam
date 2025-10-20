@@ -31,104 +31,113 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => viewModel..doIntent(GetUserDataEvent()),
-      child: Scaffold(
-        appBar: AppBar(title: Text(AppLocalizations.of(context)!.profile)),
-        body: Padding(
-          padding: REdgeInsets.symmetric(horizontal: 16, vertical: 24),
-          child: BlocConsumer<EditProfileCubit, EditProfileState>(
-            listener: (context, state) {
-              if (state.errorEditProfile != null) {
-                ToastMessage.toastMsg(
-                  state.errorEditProfile ?? "",
-                  Colors.red,
-                  Colors.white,
-                );
-              } else if (state.successEditProfile != null) {
-                ToastMessage.toastMsg(
-                  AppLocalizations.of(context)!.profile_edited_successfully,
-                  Colors.green,
-                  Colors.white,
-                );
-                context.pushNamed(AppRoutes.mainLayout);
-              }
-            },
-            builder: (context, state) {
-              if (state.errorGetUserData != null) {
-                return Center(
-                  child: Column(
-                    spacing: 30.h,
+      child: SafeArea(
+        child: Scaffold(
+          body: Padding(
+            padding: REdgeInsets.symmetric(horizontal: 16),
+            child: BlocConsumer<EditProfileCubit, EditProfileState>(
+              listener: (context, state) {
+                if (state.errorEditProfile != null) {
+                  ToastMessage.toastMsg(
+                    state.errorEditProfile ?? "",
+                    Colors.red,
+                    Colors.white,
+                  );
+                } else if (state.successEditProfile != null) {
+                  ToastMessage.toastMsg(
+                    AppLocalizations.of(context)!.profile_edited_successfully,
+                    Colors.green,
+                    Colors.white,
+                  );
+                  context.pushNamed(AppRoutes.mainLayout);
+                }
+              },
+              builder: (context, state) {
+                if (state.errorGetUserData != null) {
+                  return Center(
+                    child: Column(
+                      spacing: 30.h,
+                      children: [
+                        Text(state.errorGetUserData ?? ""),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(AppLocalizations.of(context)!.try_again),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (state.successGetUserData != null) {
+                  if (!isControllersInitialized) {
+                    viewModel.userNameController.text =
+                        state.userData?.username ?? '';
+                    viewModel.firstNameController.text =
+                        state.userData?.firstName ?? '';
+                    viewModel.lastNameController.text =
+                        state.userData?.lastName ?? '';
+                    viewModel.emailController.text =
+                        state.userData?.email ?? '';
+                    viewModel.phoneNumberController.text =
+                        state.userData?.phone ?? '';
+                    viewModel.passwordController.text = '4453575';
+
+                    isControllersInitialized = true;
+                  }
+
+                  if (!isListenersAdded) {
+                    viewModel.userNameController.addListener(
+                      viewModel.checkIfEdited,
+                    );
+                    viewModel.firstNameController.addListener(
+                      viewModel.checkIfEdited,
+                    );
+                    viewModel.lastNameController.addListener(
+                      viewModel.checkIfEdited,
+                    );
+                    viewModel.emailController.addListener(
+                      viewModel.checkIfEdited,
+                    );
+                    viewModel.phoneNumberController.addListener(
+                      viewModel.checkIfEdited,
+                    );
+                    isListenersAdded = true;
+                  }
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 24.h,
                     children: [
-                      Text(state.errorGetUserData ?? ""),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(AppLocalizations.of(context)!.try_again),
+                      Text(
+                        AppLocalizations.of(context)!.profile,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      EditProfileFields(
+                        emailController: viewModel.emailController,
+                        firstNameController: viewModel.firstNameController,
+                        formKey: viewModel.formKey,
+                        lastNameController: viewModel.lastNameController,
+                        passwordController: viewModel.passwordController,
+                        phoneNumberController: viewModel.phoneNumberController,
+                        userNameController: viewModel.userNameController,
+                      ),
+                      verticalSpace(48),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(double.infinity, 50.h),
+                        ),
+                        onPressed: state.isEdited
+                            ? () => viewModel.doIntent(
+                                EditProfileEventWhenSubmit(),
+                              )
+                            : null,
+                        child: Text(AppLocalizations.of(context)!.update),
                       ),
                     ],
-                  ),
-                );
-              } else if (state.successGetUserData != null) {
-                if (!isControllersInitialized) {
-                  viewModel.userNameController.text =
-                      state.userData?.username ?? '';
-                  viewModel.firstNameController.text =
-                      state.userData?.firstName ?? '';
-                  viewModel.lastNameController.text =
-                      state.userData?.lastName ?? '';
-                  viewModel.emailController.text = state.userData?.email ?? '';
-                  viewModel.phoneNumberController.text =
-                      state.userData?.phone ?? '';
-                  viewModel.passwordController.text = '4453575';
-
-                  isControllersInitialized = true;
+                  );
+                } else {
+                  return const Center(child: CircularProgressIndicator());
                 }
-
-                if (!isListenersAdded) {
-                  viewModel.userNameController.addListener(
-                    viewModel.checkIfEdited,
-                  );
-                  viewModel.firstNameController.addListener(
-                    viewModel.checkIfEdited,
-                  );
-                  viewModel.lastNameController.addListener(
-                    viewModel.checkIfEdited,
-                  );
-                  viewModel.emailController.addListener(
-                    viewModel.checkIfEdited,
-                  );
-                  viewModel.phoneNumberController.addListener(
-                    viewModel.checkIfEdited,
-                  );
-                  isListenersAdded = true;
-                }
-
-                return Column(
-                  children: [
-                    EditProfileFields(
-                      emailController: viewModel.emailController,
-                      firstNameController: viewModel.firstNameController,
-                      formKey: viewModel.formKey,
-                      lastNameController: viewModel.lastNameController,
-                      passwordController: viewModel.passwordController,
-                      phoneNumberController: viewModel.phoneNumberController,
-                      userNameController: viewModel.userNameController,
-                    ),
-                    verticalSpace(48),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50.h),
-                      ),
-                      onPressed: state.isEdited
-                          ? () =>
-                                viewModel.doIntent(EditProfileEventWhenSubmit())
-                          : null,
-                      child: Text(AppLocalizations.of(context)!.update),
-                    ),
-                  ],
-                );
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
-            },
+              },
+            ),
           ),
         ),
       ),

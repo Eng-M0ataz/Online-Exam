@@ -57,23 +57,22 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<VerifyResetCodeResponseDto> confirmCode(
-      EmailVerificationInputModel resetCode) async {
+    EmailVerificationInputModel resetCode,
+  ) async {
     return await _apiServices.confirmCode(resetCode);
   }
 
   @override
   Future<ForgetPasswordResponseDto> requestPasswordReset(
-      ForgetPasswordInputModel email) async {
+    ForgetPasswordInputModel email,
+  ) async {
     return await _apiServices.requestPasswordReset(email);
   }
 
   @override
   Future<ResetPasswordResponseDto> resetPassword(
-      ResetPasswordInputModel resetPasswordInputModel) async {
+    ResetPasswordInputModel resetPasswordInputModel,
+  ) async {
     return await _apiServices.resetPassword(resetPasswordInputModel);
   }
-
-
-
-
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:online_exam/config/routing/routing_extensions.dart';
-import 'package:online_exam/core/utils/app_images.dart';
-
+import 'package:online_exam/core/utils/font_weight.dart';
 import '../../../../config/routing/app_routes.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../manager/get_exams_cubit.dart';
@@ -19,21 +18,37 @@ class GetExamsBlocBuilder extends StatelessWidget {
     return BlocBuilder<GetExamsCubit, GetExamsState>(
       builder: (context, state) {
         if (state is GetExamsSuccessState) {
-          return ListView.separated(
-            itemBuilder: (context, index) => GestureDetector(
-              onTap: () {
-                context.pushNamed(
-                  AppRoutes.specificExamScreen,
-                  arguments: state.exams[index],
+          return state.exams.isEmpty
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/no_data.svg',
+                      height: 200.h,
+                      width: 200.w,
+                    ),
+                    verticalSpace(10),
+                    Text(
+                      'Sorry no Exams found For this Subject',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontWeight: AppFontWeight.medium,
+                      ),
+                    ),
+                  ],
+                )
+              : ListView.separated(
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      context.pushNamed(
+                        AppRoutes.specificExamScreen,
+                        arguments: state.exams[index],
+                      );
+                    },
+                    child: ExamsListViewItem(exam: state.exams[index]),
+                  ),
+                  separatorBuilder: (context, index) => verticalSpace(10.h),
+                  itemCount: state.exams.length,
                 );
-              },
-              child: state.exams.isEmpty
-                  ? Center(child: Lottie.asset(AppImages.emptyLottie))
-                  : ExamsListViewItem(exam: state.exams[index]),
-            ),
-            separatorBuilder: (context, index) => verticalSpace(10.h),
-            itemCount: state.exams.length,
-          );
         }
         if (state is GetExamsErrorState) {
           return Center(child: Text(state.errorMessage));

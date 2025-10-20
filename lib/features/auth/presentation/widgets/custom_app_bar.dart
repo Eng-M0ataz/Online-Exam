@@ -4,8 +4,9 @@ import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
 
 class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({super.key, this.onTap});
+  const CustomBackButton({super.key, this.onTap, this.title});
   final VoidCallback? onTap;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CustomBackButton extends StatelessWidget {
         ),
 
         Text(
-          AppLocalizations.of(context)!.sign_up,
+          title ?? AppLocalizations.of(context)!.sign_up,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ],

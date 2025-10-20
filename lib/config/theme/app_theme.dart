@@ -79,8 +79,8 @@ abstract class AppTheme {
           borderSide: const BorderSide(color: AppColors.red),
         ),
       ),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: AppColors.blue[70],
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: AppColors.white,
       ),
       textTheme: TextTheme(
         bodySmall: TextStyle(
@@ -118,16 +118,16 @@ abstract class AppTheme {
           fontWeight: AppFontWeight.medium,
           color: AppColors.black,
         ),
-          titleLarge: TextStyle(
-              fontSize: 16.sp,
-              color: AppColors.black,
-              fontWeight: AppFontWeight.regular
-          ),
-          displayLarge: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: AppFontWeight.medium,
-            color: AppColors.black,
-          )
+        titleLarge: TextStyle(
+          fontSize: 16.sp,
+          color: AppColors.black,
+          fontWeight: AppFontWeight.regular,
+        ),
+        displayLarge: TextStyle(
+          fontSize: 18.sp,
+          fontWeight: AppFontWeight.medium,
+          color: AppColors.black,
+        ),
       ),
     );
   }
@@ -143,7 +143,7 @@ abstract class AppTheme {
       onError: AppColors.white,
       surface: AppColors.white,
       onSurface: AppColors.blue,
-        shadow: AppColors.black
+      shadow: AppColors.black,
     ),
   );
 }

@@ -11,10 +11,12 @@ class SignUpButton extends StatelessWidget {
     required this.isvalidated,
     required this.registerInputModel,
     required this.isLoading,
+    required this.globalKey,
   });
 
   final RegisterInputModel registerInputModel;
   final bool isvalidated, isLoading;
+  final GlobalKey<FormState> globalKey;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,9 @@ class SignUpButton extends StatelessWidget {
         style: const ButtonStyle(),
         onPressed: isvalidated
             ? () {
-                context.read<SignUpCubit>().signUp(registerInputModel);
+                if (globalKey.currentState!.validate()) {
+                  context.read<SignUpCubit>().signUp(registerInputModel);
+                }
               }
             : null,
         child: isLoading

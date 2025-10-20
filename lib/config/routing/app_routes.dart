@@ -8,4 +8,7 @@ abstract class AppRoutes {
   static const String homeRoute = "/home";
   static const String profileScreenRoute = "/profileScreen";
   static const String changePassword = "/changePassword";
+  static const String examScoreRoute = "/examScore";
+  static const String examAnswerRoute = "/examHistory";
+  static const String examRoute = "/exam";
 }

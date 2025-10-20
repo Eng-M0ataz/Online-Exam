@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/config/routing/app_routes.dart';
+import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
 import 'package:online_exam/core/utils/app_images.dart';
@@ -21,9 +23,8 @@ class SpecificExamScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          verticalSpace(8),
           Padding(
-            padding: REdgeInsets.all(16),
+            padding: REdgeInsets.symmetric(horizontal: 16),
             child: Column(
               spacing: 8.h,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +38,7 @@ class SpecificExamScreen extends StatelessWidget {
                         Image.asset(AppImages.examTest),
                         Text(
                           'English',
-                          style: Theme.of(context).textTheme.headlineLarge,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -54,7 +55,7 @@ class SpecificExamScreen extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: examData.title,
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       TextSpan(
                         text:
@@ -81,7 +82,7 @@ class SpecificExamScreen extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                // Navigate to the exam questions screen
+                context.pushNamed(AppRoutes.examRoute, arguments: examData.id);
               },
               child: const Text(AppConstants.start),
             ),
