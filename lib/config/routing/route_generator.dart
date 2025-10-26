@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/core/enums/transition_enum.dart';
+import 'package:online_exam/core/functions/custom_route_trans.dart';
 import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
 import 'package:online_exam/features/Exam/presentation/pages/exam_score_screen.dart';
 import 'package:online_exam/features/Exam/presentation/pages/exam_screen_.dart';
@@ -12,6 +14,7 @@ import 'package:online_exam/features/main_layout/results/presentation/pages/resu
 import 'package:online_exam/features/specific_exam/presentation/pages/specific_exam.dart';
 import 'package:online_exam/features/subject_exams/domain/entities/exams_on_subject_entity.dart';
 import 'package:online_exam/features/subject_exams/presentation/pages/subject_exams_screen.dart';
+
 import '../../core/di/di.dart';
 import '../../features/auth/presentation/pages/forget_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_in_screen.dart';
@@ -45,10 +48,10 @@ class RouteGenerator {
             child: ExamScreen(examId: args),
           ),
         );
-
       case AppRoutes.signInRoute:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
+        return customRouteTransition(
+          type: TransitionType.slideFromRight,
+          page: BlocProvider(
             create: (_) => getIt<AuthCubit>(),
             child: const SignInScreen(),
           ),

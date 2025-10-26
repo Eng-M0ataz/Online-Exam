@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam/config/routing/routing_extensions.dart';
+
 import '../../../../config/routing/app_routes.dart';
 import '../../../../core/l10n/translations/app_localizations.dart';
 import '../../../../core/utils/font_weight.dart';
@@ -26,7 +27,7 @@ class DoNotHaveAnAccount extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushReplacementNamed(AppRoutes.signUpRoute);
+                context.pushNamed(AppRoutes.signUpRoute);
               },
           ),
         ],

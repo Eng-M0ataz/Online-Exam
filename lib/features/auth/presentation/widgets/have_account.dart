@@ -20,7 +20,7 @@ class AlreadyHaveAnAcoountWidget extends StatelessWidget {
           ).textTheme.bodyLarge!.copyWith(fontWeight: AppFontWeight.regular),
         ),
         GestureDetector(
-          onTap: () => context.pushNamed(AppRoutes.signInRoute),
+          onTap: () => context.pushReplacementNamed(AppRoutes.signInRoute),
           child: Text(
             AppLocalizations.of(context)!.login,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
