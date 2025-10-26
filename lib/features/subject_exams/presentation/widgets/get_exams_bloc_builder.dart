@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:online_exam/config/routing/routing_extensions.dart';
+import 'package:online_exam/core/dummy/subject_list.dart';
 import 'package:online_exam/core/utils/font_weight.dart';
+
 import '../../../../config/routing/app_routes.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../manager/get_exams_cubit.dart';
@@ -44,7 +46,10 @@ class GetExamsBlocBuilder extends StatelessWidget {
                         arguments: state.exams[index],
                       );
                     },
-                    child: ExamsListViewItem(exam: state.exams[index]),
+                    child: ExamsListViewItem(
+                      isLoading: false,
+                      exam: state.exams[index],
+                    ),
                   ),
                   separatorBuilder: (context, index) => verticalSpace(10.h),
                   itemCount: state.exams.length,
@@ -53,7 +58,7 @@ class GetExamsBlocBuilder extends StatelessWidget {
         if (state is GetExamsErrorState) {
           return Center(child: Text(state.errorMessage));
         }
-        return const Center(child: CircularProgressIndicator());
+        return ExamsListViewItem(isLoading: true, exam: exams[0]);
       },
     );
   }

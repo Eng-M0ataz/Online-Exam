@@ -11,4 +11,8 @@ abstract class AppConstants {
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmFiM2NlNTU1NGIzMjg5MTJlNTExMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUzMDk3NjE4fQ.p-Axr3vjlCrJTdUYgfYp6gpHi0yYYU8EzrTZ6kM7b7c";
   static const String isRemember = "isRemember";
   static const String examBoxName = "Solved_Exam_Entity";
+  static const String contentType = 'Content-Type';
+  static const String applicationJson = 'application/json';
+  static const String bearer = 'Bearer';
+  static const String authorization = 'Authorization';
 }

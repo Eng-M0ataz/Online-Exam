@@ -11,6 +11,7 @@ import 'package:online_exam/core/widgets/custom_elvated_button.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_states.dart';
 import 'package:online_exam/features/auth/presentation/widgets/sign_in_fields.dart';
+
 import '../../../../core/helpers/dialogue_utils.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../widgets/dont_have_an_account.dart';
@@ -48,23 +49,23 @@ class _SignInScreenState extends State<SignInScreen> {
                 message: AppLocalizations.of(context)!.login_successfully,
                 title: AppLocalizations.of(context)!.success,
                 posActionName: AppLocalizations.of(context)!.ok,
-                posAction: () {
-                  SharedPrefHelper.saveData(
+                posAction: () async {
+                  await SharedPrefHelper.saveData(
                     key: ApiConstants.token,
                     val: state.userEntity.token,
                   );
 
                   if (isRemember) {
-                    SharedPrefHelper.saveData(
+                    await SharedPrefHelper.saveData(
                       key: AppConstants.isRemember,
                       val: isRemember,
                     );
                   }
-                  context.pushNamedAndRemoveUntil(
-                    AppRoutes.mainLayout,
-                    predicate: (route) => true,
-                  );
                 },
+              );
+              context.pushNamedAndRemoveUntil(
+                AppRoutes.mainLayout,
+                predicate: (route) => true,
               );
             }
           },

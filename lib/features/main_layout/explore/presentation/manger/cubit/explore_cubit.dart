@@ -12,7 +12,7 @@ class ExploreCubit extends Cubit<ExploreState> {
   final GetSubjectsUseCase _getSubjectsUseCase;
   ExploreCubit(this._getSubjectsUseCase) : super(ExploreInitial());
 
-  Future<void> getSubjects({required String token}) async {
+  Future<void> getSubjects() async {
     emit(ExploreLoadingState());
     final result = await _getSubjectsUseCase.invoke();
     switch (result) {
