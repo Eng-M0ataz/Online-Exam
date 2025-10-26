@@ -69,9 +69,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
       case AppRoutes.mainLayout:
-        return MaterialPageRoute(
-          builder: (context) => const MainLayout(initiaIndex: 0),
-        );
+        return MaterialPageRoute(builder: (context) => const MainLayout());
 
       case AppRoutes.subjectExamsScreen:
         final args = settings.arguments as SubjectEntity;

@@ -4,9 +4,10 @@ import 'package:online_exam/core/utils/app_constants.dart';
 
 String? getInitialRoute() {
   final isremember = SharedPrefHelper.getData(key: AppConstants.isRemember);
-  if (isremember == false || isremember == null) {
-    return AppRoutes.signInRoute;
-  } else {
+  final token = SharedPrefHelper.getData(key: AppConstants.token);
+  if (isremember == true && token != null) {
     return AppRoutes.mainLayout;
+  } else {
+    return AppRoutes.signInRoute;
   }
 }

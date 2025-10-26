@@ -49,23 +49,23 @@ class _SignInScreenState extends State<SignInScreen> {
                 message: AppLocalizations.of(context)!.login_successfully,
                 title: AppLocalizations.of(context)!.success,
                 posActionName: AppLocalizations.of(context)!.ok,
-                posAction: () async {
-                  await SharedPrefHelper.saveData(
+                posAction: () {
+                  SharedPrefHelper.saveData(
                     key: ApiConstants.token,
                     val: state.userEntity.token,
                   );
 
                   if (isRemember) {
-                    await SharedPrefHelper.saveData(
+                    SharedPrefHelper.saveData(
                       key: AppConstants.isRemember,
                       val: isRemember,
                     );
                   }
+                  context.pushNamedAndRemoveUntil(
+                    AppRoutes.mainLayout,
+                    predicate: (route) => true,
+                  );
                 },
-              );
-              context.pushNamedAndRemoveUntil(
-                AppRoutes.mainLayout,
-                predicate: (route) => true,
               );
             }
           },

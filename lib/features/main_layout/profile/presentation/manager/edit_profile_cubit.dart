@@ -19,7 +19,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     this.changePasswordUseCase,
     this.getUserDataUseCase,
     this.editProfileUseCase,
-  ) : super(EditProfileState()){
+  ) : super(EditProfileState()) {
     currentPassword.addListener(_validatePasswordFields);
     newPassword.addListener(_validatePasswordFields);
     confirmNewPassword.addListener(_validatePasswordFields);
@@ -100,6 +100,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           state.copyWith(
             isLoadingEditProfile: false,
             successEditProfile: result.data.message,
+            isEdited: false,
           ),
         );
         break;
@@ -158,7 +159,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   }
 
   void _validatePasswordFields() {
-    final bool isEnabled = currentPassword.text.isNotEmpty &&
+    final bool isEnabled =
+        currentPassword.text.isNotEmpty &&
         newPassword.text.isNotEmpty &&
         confirmNewPassword.text.isNotEmpty;
     if (isEnabled != state.isPasswordButtonEnabled) {

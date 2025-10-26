@@ -9,15 +9,23 @@ import 'package:online_exam/features/main_layout/results/presentation/pages/resu
 import 'package:online_exam/features/main_layout/widgets/button_nav_bar.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key, required this.initiaIndex});
+  const MainLayout({super.key, this.initiaIndex});
   final int? initiaIndex;
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }
 
+late int currentIndex;
+
 class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 0;
+  @override
+  void initState() {
+    currentIndex = widget.initiaIndex ?? 0;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

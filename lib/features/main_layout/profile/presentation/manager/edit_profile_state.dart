@@ -7,6 +7,7 @@ class EditProfileState {
   bool isEdited = false;
   final bool isPasswordButtonEnabled;
   UserEntity? userData;
+  final bool isLoading;
 
   String? errorGetUserData;
   String? errorChangePassword;
@@ -29,6 +30,7 @@ class EditProfileState {
     this.successGetUserData,
     this.successEditProfile,
     this.userData,
+    this.isLoading = false,
   });
 
   EditProfileState copyWith({
@@ -44,6 +46,7 @@ class EditProfileState {
     String? successChangePassword,
     String? successEditProfile,
     UserEntity? userData,
+    bool? isLoading,
   }) {
     return EditProfileState(
       isLoadingGetUserData: isLoadingGetUserData ?? this.isLoadingGetUserData,
@@ -60,7 +63,8 @@ class EditProfileState {
       successEditProfile: successEditProfile ?? this.successEditProfile,
       userData: userData ?? this.userData,
       isPasswordButtonEnabled:
-      isPasswordButtonEnabled ?? this.isPasswordButtonEnabled,
+          isPasswordButtonEnabled ?? this.isPasswordButtonEnabled,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 }

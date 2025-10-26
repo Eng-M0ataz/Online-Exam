@@ -12,6 +12,7 @@ class ResultsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       itemCount: listOfSolvedExams.length,
       itemBuilder: (context, index) => GestureDetector(
         onTap: () {

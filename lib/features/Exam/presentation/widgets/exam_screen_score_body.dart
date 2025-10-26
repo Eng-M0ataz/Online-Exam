@@ -36,7 +36,9 @@ class _ExamScreenScoreBodyState extends State<ExamScreenScoreBody> {
     return BlocBuilder<ExamCubit, ExamState>(
       builder: (context, state) {
         if (state.isScoreLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.blue),
+          );
         }
         if (state.scoreFailure != null) {
           return Center(child: Text(state.scoreFailure!.errorMessage));
@@ -99,7 +101,10 @@ class _ExamScreenScoreBodyState extends State<ExamScreenScoreBody> {
                   ),
                   onPressed: () {
                     context.read<ExamCubit>().close();
-                    context.pushReplacementNamed(AppRoutes.examRoute);
+                    context.pushReplacementNamed(
+                      AppRoutes.examRoute,
+                      arguments: state.listOfQuestionEntity[0].exam!.id,
+                    );
                   },
                   child: Text(
                     AppLocalizations.of(context)!.start_again,

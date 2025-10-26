@@ -10,6 +10,7 @@ import 'package:online_exam/features/Exam/domain/entities/score_entity.dart';
 import 'package:online_exam/features/Exam/domain/usecases/check_exam_answers_use_case.dart';
 import 'package:online_exam/features/Exam/domain/usecases/get_questions_use_case.dart';
 import 'package:online_exam/features/Exam/domain/usecases/store_exam_history_localy.dart';
+
 part 'exam_state.dart';
 
 @injectable

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/config/theme/colors.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/network/api_constants.dart';
@@ -41,7 +42,9 @@ class _ExamScreenBodyState extends State<ExamScreenBody> {
             );
           }
           if (state.isExamLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(color: AppColors.blue),
+            );
           }
           return Column(
             children: [
