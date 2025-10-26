@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/config/routing/app_routes.dart';
-import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/config/theme/colors.dart';
 import 'package:online_exam/core/helpers/dialogue_utils.dart';
 import 'package:online_exam/core/helpers/flutter_toast.dart';
@@ -69,13 +68,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
           if (state.successConfirmCode != null) {
             _controller.jumpToPage(2);
-          }
 
+          }
           if (state.successResetPassword != null) {
-            context.pushNamedAndRemoveUntil(
-              AppRoutes.signInRoute,
-              predicate: (_) => false,
-            );
+           Navigator.pushReplacementNamed(context, AppRoutes.signInRoute);
           }
         },
         child: Scaffold(

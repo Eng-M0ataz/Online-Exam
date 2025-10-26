@@ -5,6 +5,7 @@ class EditProfileState {
   bool isLoadingChangePassword = false;
   bool isLoadingEditProfile = false;
   bool isEdited = false;
+  final bool isPasswordButtonEnabled;
   UserEntity? userData;
 
   String? errorGetUserData;
@@ -19,6 +20,7 @@ class EditProfileState {
     this.isLoadingGetUserData = false,
     this.isLoadingChangePassword = false,
     this.isLoadingEditProfile = false,
+    this.isPasswordButtonEnabled = false,
     this.isEdited = false,
     this.errorChangePassword,
     this.errorGetUserData,
@@ -33,6 +35,7 @@ class EditProfileState {
     bool? isLoadingChangePassword,
     bool? isLoadingGetUserData,
     bool? isLoadingEditProfile,
+    bool? isPasswordButtonEnabled,
     bool? isEdited,
     String? errorChangePassword,
     String? errorGetUserData,
@@ -56,6 +59,8 @@ class EditProfileState {
           successChangePassword ?? this.successChangePassword,
       successEditProfile: successEditProfile ?? this.successEditProfile,
       userData: userData ?? this.userData,
+      isPasswordButtonEnabled:
+      isPasswordButtonEnabled ?? this.isPasswordButtonEnabled,
     );
   }
 }

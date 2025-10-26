@@ -12,7 +12,8 @@ class SubjectsListViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<ExploreCubit, ExploreState>(
       builder: (context, state) {
         if (state is ExploreSuccessState) {
-          return SubjectsListView(isLoading: false, subjects: state.subjects);
+          return SubjectsListView(
+            isLoading: false, subjects: state.displayedSubjects,);
         }
         if (state is ExploreErrorState) {
           return Center(child: Text(state.errorMessage));

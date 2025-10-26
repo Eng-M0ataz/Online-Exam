@@ -46,7 +46,7 @@ class CustomSubjectItem extends StatelessWidget {
                         imageUrl: subjectEntity.image!,
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
-                        height: 90.h,
+                        height: 90.w,
                         width: 90.w,
                         fit: BoxFit.cover,
                       ),
@@ -55,6 +55,7 @@ class CustomSubjectItem extends StatelessWidget {
               Text(
                 subjectEntity.name ?? '',
                 style: Theme.of(context).textTheme.titleLarge,
+                overflow:  TextOverflow.ellipsis,
               ),
             ],
           ),
