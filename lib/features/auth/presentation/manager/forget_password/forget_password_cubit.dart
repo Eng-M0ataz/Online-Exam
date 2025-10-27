@@ -27,14 +27,10 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   final RequestPasswordResetUseCase requestPasswordResetUseCase;
   final ResetPasswordUseCase resetPasswordUseCase;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  final TextEditingController emailController = TextEditingController(
-    text: "anaa71137@gmail.com",
-  );
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
-  final TextEditingController newPassController = TextEditingController(
-    text: "A7medfayed",
-  );
+  final TextEditingController newPassController = TextEditingController();
+
   String _email = '';
 
   doIntent(ForgetPasswordEvent event) {

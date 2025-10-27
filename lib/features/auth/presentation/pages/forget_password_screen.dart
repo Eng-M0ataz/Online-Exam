@@ -68,10 +68,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
           if (state.successConfirmCode != null) {
             _controller.jumpToPage(2);
-
           }
           if (state.successResetPassword != null) {
-           Navigator.pushReplacementNamed(context, AppRoutes.signInRoute);
+            Navigator.pushReplacementNamed(context, AppRoutes.signInRoute);
           }
         },
         child: Scaffold(
@@ -79,6 +78,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           body: Padding(
             padding: REdgeInsets.symmetric(vertical: 40, horizontal: 16),
             child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _controller,
               children: [
                 ForgetPasswordWidget(
