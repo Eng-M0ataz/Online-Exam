@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/config/routing/app_routes.dart';
 import 'package:online_exam/core/helpers/dialogue_utils.dart';
+import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/helpers/validators.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
+import 'package:online_exam/core/utils/app_constants.dart';
 import 'package:online_exam/core/widgets/custom_elvated_button.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_cubit.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_event.dart';
@@ -45,8 +47,15 @@ class ChangePasswordScreen extends StatelessWidget {
                   )!.password_changed_successfully,
                   posActionName: 'ok',
                   title: 'Success',
-                  posAction: () {
-                    Navigator.of(context).pushReplacementNamed(AppRoutes.signInRoute);
+                  posAction: () async {
+                    await SharedPrefHelper.removeData(key: AppConstants.token);
+                    await SharedPrefHelper.removeData(
+                      key: AppConstants.isRemember,
+                    );
+                    Navigator.of(
+                      // ignore: use_build_context_synchronously
+                      context,
+                    ).pushReplacementNamed(AppRoutes.signInRoute);
                   },
                 );
               }
@@ -69,7 +78,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 CustomTextFormField(
                   validator: (confirmPassword) =>
                       Validations.validateConfirmPassword(
-                        context.read<EditProfileCubit>().currentPassword.text,
+                        context.read<EditProfileCubit>().newPassword.text,
                         confirmPassword,
                       ),
                   controller: context
