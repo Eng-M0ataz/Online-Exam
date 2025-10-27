@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam/core/enums/transition_enum.dart';
-import 'package:online_exam/core/functions/custom_route_trans.dart';
 import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
 import 'package:online_exam/features/Exam/presentation/pages/exam_score_screen.dart';
 import 'package:online_exam/features/Exam/presentation/pages/exam_screen_.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
+import 'package:online_exam/features/auth/presentation/pages/sign_in_screen.dart';
 import 'package:online_exam/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:online_exam/features/main_layout/main_layout.dart';
 import 'package:online_exam/features/main_layout/results/domain/entities/solved_questions_entity.dart';
@@ -17,7 +16,6 @@ import 'package:online_exam/features/subject_exams/presentation/pages/subject_ex
 
 import '../../core/di/di.dart';
 import '../../features/auth/presentation/pages/forget_password_screen.dart';
-import '../../features/auth/presentation/pages/sign_in_screen.dart';
 import '../../features/main_layout/explore/domain/entities/subject_entity.dart';
 import '../../features/main_layout/profile/presentation/manager/edit_profile_cubit.dart';
 import '../../features/main_layout/profile/presentation/page/change_password_screen.dart';
@@ -49,10 +47,9 @@ class RouteGenerator {
           ),
         );
       case AppRoutes.signInRoute:
-        return customRouteTransition(
-          type: TransitionType.slideFromRight,
-          page: BlocProvider(
-            create: (_) => getIt<AuthCubit>(),
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<AuthCubit>(),
             child: const SignInScreen(),
           ),
         );
