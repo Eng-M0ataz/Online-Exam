@@ -9,10 +9,10 @@ import 'package:online_exam/core/helpers/validators.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
 import 'package:online_exam/core/widgets/custom_elvated_button.dart';
+import 'package:online_exam/features/auth/presentation/widgets/custom_password_text_form_field.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_cubit.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_event.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_state.dart';
-import 'package:online_exam/features/main_layout/profile/presentation/widgets/edit_profile_fields.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
@@ -63,19 +63,19 @@ class ChangePasswordScreen extends StatelessWidget {
             child: Column(
               spacing: 24.h,
               children: [
-                CustomTextFormField(
+                CustomPasswordTextFormField(
                   controller: context.read<EditProfileCubit>().currentPassword,
-                  labelText: AppLocalizations.of(context)!.current_password,
-                  hintText: AppLocalizations.of(context)!.current_password,
+                  label: AppLocalizations.of(context)!.current_password,
+                  hint: AppLocalizations.of(context)!.current_password,
                   validator: Validations.validatePassword,
                 ),
-                CustomTextFormField(
+                CustomPasswordTextFormField(
                   validator: Validations.validatePassword,
                   controller: context.read<EditProfileCubit>().newPassword,
-                  labelText: AppLocalizations.of(context)!.new_password,
-                  hintText: AppLocalizations.of(context)!.new_password,
+                  label: AppLocalizations.of(context)!.new_password,
+                  hint: AppLocalizations.of(context)!.new_password,
                 ),
-                CustomTextFormField(
+                CustomPasswordTextFormField(
                   validator: (confirmPassword) =>
                       Validations.validateConfirmPassword(
                         context.read<EditProfileCubit>().newPassword.text,
@@ -84,8 +84,8 @@ class ChangePasswordScreen extends StatelessWidget {
                   controller: context
                       .read<EditProfileCubit>()
                       .confirmNewPassword,
-                  labelText: AppLocalizations.of(context)!.confirm_password,
-                  hintText: AppLocalizations.of(context)!.confirm_password,
+                  label: AppLocalizations.of(context)!.confirm_password,
+                  hint: AppLocalizations.of(context)!.confirm_password,
                 ),
                 verticalSpace(54),
 
