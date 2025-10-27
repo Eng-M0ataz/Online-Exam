@@ -1,8 +1,10 @@
 # 🎓 Online Exam - Mobile Application
-
+<br><br>
 <div align="center">
   <img src="assets/images/logo.png" alt="Online Exam Logo" width="200"/>
-  
+
+<br><br>
+
   [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
   [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
   [![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/)
@@ -137,14 +139,49 @@ lib/
     └── splash/                    # Splash screen
 └── main.dart                      # App entry point
 ```
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-15-36-498_com example flicked-portrait" src="https://github.com/user-attachments/assets/cf13a035-4862-41a8-a791-c40a38b56c90" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-15-40-105_com example flicked-portrait" src="https://github.com/user-attachments/assets/80e16025-2004-492c-a366-5f900b35c1e6" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-13-06-372_com example flicked-portrait" src="https://github.com/user-attachments/assets/2c3c931c-aee2-4e23-9d03-a245d53792bc" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-14-11-892_com example flicked-portrait" src="https://github.com/user-attachments/assets/b0840be3-b068-4e70-adcf-9480be9ac3e4" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-12-51-072_com example flicked-portrait" src="https://github.com/user-attachments/assets/49af7993-94c4-441b-9bc8-adba10da3291" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-15-23-784_com example flicked-portrait" src="https://github.com/user-attachments/assets/c3d0379a-2ef2-4c2e-bee6-085059259afe" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-14-48-612_com example flicked-portrait" src="https://github.com/user-attachments/assets/27be3cc4-1abb-42f3-bd99-185f28d43fd2" />
-<img width="500" height="800" alt="Screenshot_2025-09-15-00-14-48-612_com example flicked-left" src="https://github.com/user-attachments/assets/64b37a1e-858f-493e-8e20-3a873195ebcf" />
+## 📸 لقطات الشاشة / Screenshots
+
+### Authentication Screens / شاشات المصادقة
+<div align="center">
+  <img width="250" alt="Login Screen" src="https://github.com/user-attachments/assets/fbcfbef9-ed3f-4903-a3d7-4360fbdfe3a5" />
+  <img width="250" alt="Signup Screen" src="https://github.com/user-attachments/assets/b1ec8ff0-3266-4bbc-bef5-26cb8a2bcec1" />
+  <img width="250" alt="Forgot Password" src="https://github.com/user-attachments/assets/b68d1694-dad0-4684-81b3-82cd127f1ee1" />
+  <img width="250" alt="Email Verification" src="https://github.com/user-attachments/assets/92509e6b-3cb7-4cc3-ad12-67bc9c24849f" />
+  <img width="250" alt="Reset Password" src="https://github.com/user-attachments/assets/7600a7ba-ae24-4f5f-9e97-6d07b5a0c778" />
+</div>
+
+### Main Application Screens / الشاشات الرئيسية
+<div align="center">
+  <img width="250" height="2359" alt="Image" src="https://github.com/user-attachments/assets/ddb9d240-7d98-4886-a4c7-33eb3e2c7c53" />
+  <img width="250" alt="Explore Subjects" src="https://github.com/user-attachments/assets/e5c11646-4dae-42d7-b18b-11bc012bc36d" />
+  <img width="250" alt="Results Empty State" src="https://github.com/user-attachments/assets/d04c1e37-52c0-4307-bb1b-03f96658e208" />
+  <img width="250" alt="Profile Screen" src="https://github.com/user-attachments/assets/10011780-ccf7-4b36-b578-578f7895ca3f" />
+</div>
+
+### Explore & Exam Selection / استكشاف واختيار الامتحانات
+<div align="center">
+  <img width="250" alt="JavaScript Exam" src="https://github.com/user-attachments/assets/59e6fa44-6d39-4c99-8d83-98344c4ef173" />
+  <img width="250" alt="Angular Exam" src="https://github.com/user-attachments/assets/77a20d09-9a47-42af-9838-7def445993e9" />
+  <img width="250" alt="Exam Instructions" src="https://github.com/user-attachments/assets/e112486d-9c6f-4107-be1d-3336bb4b0954" />
+</div>
+
+### Exam Experience / تجربة الامتحان
+<div align="center">
+  <img width="250" alt="Exam Question" src="https://github.com/user-attachments/assets/394f75eb-0c40-49d9-849a-fcc6b181a6b6" />
+  <img width="250" alt="Question with Selected Answer" src="https://github.com/user-attachments/assets/62b070a4-b43b-4236-9dbc-e959b1cf4af7" />
+  <img width="250" alt="Answer Validation" src="https://github.com/user-attachments/assets/0bdb3444-8a1d-43d8-910f-fe413b1005e1" />
+  <img width="250" alt="Last Question" src="https://github.com/user-attachments/assets/4bdec603-d8ce-4f41-bcbe-af6df879dd77" />
+</div>
+
+### Results & Review / النتائج والمراجعة
+<div align="center">
+  <img width="250" alt="Exam Score" src="https://github.com/user-attachments/assets/5b83d724-7102-4308-aa55-173ceafe4b8a" />
+  <img width="250" alt="Results List" src="https://github.com/user-attachments/assets/31c5872d-0e89-449d-8a0a-4273f182e96a" />
+  <img width="250" alt="Answer Review" src="https://github.com/user-attachments/assets/f3214d9c-37e0-47a0-8a9e-ffd11d2a757f" />
+  <img width="250" alt="Detailed Answer Review" src="https://github.com/user-attachments/assets/829b9e33-3244-46d6-a787-faae3bdeedce" />
+</div>
+
+<br><br>
 
 ### Architecture Layers
 
@@ -159,59 +196,9 @@ lib/
 - **Dependency Injection** - Loose coupling and testability
 - **Use Case Pattern** - Encapsulation of business logic
 
-## 📦 التثبيت والتشغيل / Installation & Setup
 
-### المتطلبات / Prerequisites
 
-- Flutter SDK (>=3.8.1)
-- Dart SDK
-- Android Studio / VS Code with Flutter extensions
-- Xcode (for iOS development)
-- Git
 
-### خطوات التثبيت / Installation Steps
-
-1. **استنساخ المشروع / Clone the repository**
-```bash
-git clone https://github.com/yourusername/online-exam-mo.git
-cd online-exam-mo
-```
-
-2. **التأكد من الفرع الصحيح / Check the correct branch**
-```bash
-git checkout development
-```
-
-3. **تثبيت التبعيات / Install dependencies**
-```bash
-flutter pub get
-```
-
-4. **تشغيل مولدات الكود / Run code generators**
-```bash
-flutter pub run build_runner build --delete-conflicting-outputs
-```
-
-5. **إعداد Splash Screen و Icons (اختياري) / Setup Splash Screen and Icons (Optional)**
-```bash
-# Generate app icons
-flutter pub run flutter_launcher_icons
-
-# Generate splash screen
-flutter pub run flutter_native_splash:create
-```
-
-6. **تشغيل التطبيق / Run the app**
-```bash
-# Android
-flutter run
-
-# iOS
-flutter run -d ios
-
-# Specific device
-flutter run -d <device_id>
-```
 
 ## 🚀 المميزات التقنية / Technical Features
 
@@ -335,17 +322,17 @@ We welcome contributions! Please follow these steps:
 - Write meaningful commit messages
 - Test your changes thoroughly
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Developers
 
 **Development Team**
 
-- GitHub: [Your GitHub Profile]
-- Email: your.email@example.com
-
+- name  :  Moataz Ebrahim
+- Email :  moatazebrahim221@gmail.com
+- GitHub:  https://github.com/Eng-M0ataz
+  <br><br>
+- name  :  Wasim Ghonim
+- Email :  wasimghoniem@gmail.com
+- GitHub:  https://www.linkedin.com/in/wasim-ghonim-37bb98333/
 ## 🙏 Acknowledgments
 
 - [Flutter Team](https://flutter.dev/) - For the amazing framework
